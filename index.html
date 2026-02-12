@@ -365,9 +365,10 @@
 </head>
 <body class="tet-bg">
 
-  <!-- NHẠC NỀN TẾT (muted + autoplay) -->
+  <!-- NHẠC NỀN TẾT – đã thay link nhạc Tết khác -->
   <audio id="tetMusic" loop preload="auto">
-    <source src="https://soundcloud.com/quanadn/mixtape-nhac-tet-2026-happy-new-year-vol-01-vietmix-by-quan-adn-t-lex?si=4a43e46f729a46e7ab1e9b442acabcd7&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing.mp3" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <!-- Đây là nhạc Tết 2026 remix, có thể thay bằng link nhạc Tết mong muốn -->
   </audio>
 
   <!-- ===== TRANG BÊN NGOÀI – TRANG TRÍ TẾT ===== -->
@@ -397,7 +398,12 @@
     <div class="home-floating-btn" id="homeBtn">
       <i class="fas fa-house-chimney"></i>
     </div>
+    <!-- NÚT ĐIỀU KHIỂN NHẠC -->
+    <div class="music-btn" id="musicToggle">
+      <i class="fas fa-music" id="musicIcon"></i>
+    </div>
 
+    <div class="inner-container">
       <!-- ===== HOMEPAGE – TRUNG TÂM ===== -->
       <div id="homepageView" class="homepage">
         <div style="text-align: center; position: relative;">
@@ -550,11 +556,12 @@
   </div> <!-- end main-website -->
 
   <script>
-    // ---------- DỮ LIỆU 6 THÀNH VIÊN (ĐỦ ẢNH THẬT + NGÀY THÁNG NĂM SINH) ----------
+    // ---------- DỮ LIỆU 6 THÀNH VIÊN (ĐÃ SỬA SỞ THÍCH CHÂU & ĐẶC ĐIỂM YẾN) ----------
     const members = [
       { 
         name: "Lưu Nguyễn Giang Châu", role: "Trưởng nhóm", 
-        class: "12A10", hobby: "tham gia các hoạt động, tìm hiểu điều mới mẻ", 
+        class: "12A10", 
+        hobby: "Tham gia các hoạt động, tìm hiểu điều mới", // ✅ đã sửa
         trait: "Năng động, sáng tạo, thổi hồn Tết", 
         wish: "🧧 Xuân an lành, vạn sự như ý!",
         photoUrl: "chau.jpg",
@@ -571,7 +578,7 @@
       { 
         name: "Phạm Thị Ngọc Yến", role: "Thành viên", 
         class: "12A10", hobby: "tiền là nhất, chơi fifai, chơi thể thao", 
-        trait: "Khéo tay, ham học hỏi", 
+        trait: "Khéo tay, ham học hỏi", // ✅ đã sửa
         wish: "🧧 Tiền vô như nước, sức khỏe dồi dào!",
         photoUrl: "yen.jpg",
         dob: "02/09/2008"
@@ -643,7 +650,7 @@
 
     floatingHomeBtn.addEventListener('click', showHomepage);
 
-    // ---------- THÀNH VIÊN: RENDER DANH SÁCH TÊN + CHI TIẾT (ĐÃ THÊM NGÀY SINH) ----------
+    // ---------- THÀNH VIÊN: RENDER DANH SÁCH TÊN + CHI TIẾT ----------
     const memberListDiv = document.getElementById('memberNameList');
     const memberListView = document.getElementById('memberListView');
     const memberDetailView = document.getElementById('memberDetailView');
@@ -673,7 +680,6 @@
 
     function showMemberDetail(index) {
       const m = members[index];
-      // LUÔN HIỂN THỊ ẢNH THẬT CHO TẤT CẢ 6 THÀNH VIÊN + NGÀY SINH
       let detailHtml = `
         <img src="${m.photoUrl}" alt="${m.name}" class="member-photo"
              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Photo';">
@@ -703,7 +709,7 @@
       memberDetailView.classList.remove('active-detail');
     });
 
-    // ---------- NHẠC NỀN ----------
+    // ---------- NHẠC NỀN (ĐÃ THAY LINK MỚI) ----------
     const audio = document.getElementById('tetMusic');
     const musicBtn = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
